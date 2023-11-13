@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-star {
+  background-image: radial-gradient(
+      rgba(255, 0, 0, 0.484),
+      rgba(0, 0, 0, 0.487)
+    ),
+    url('./assets/stars.webp');
+}
+
+.main-title {
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
