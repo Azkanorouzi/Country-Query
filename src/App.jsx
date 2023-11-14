@@ -1,10 +1,12 @@
 import AppLayout from './UI/AppLayout'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
-import CountryQuery from './pages/CountryQuery'
+import CountryQuery, { loader as searchLoader } from './pages/CountryQuery'
 import CountryDetails from './pages/CountryDetails'
 import { Provider } from 'react-redux'
 import store from './sotre'
+import Bookmarks from './pages/Bookmarks'
+import './services/countryApi'
 
 const router = createBrowserRouter([
   {
@@ -15,16 +17,21 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/search',
+        path: '/search/',
         element: <CountryQuery />,
       },
       {
         path: '/search/:searchTerm',
         element: <CountryQuery />,
+        loader: searchLoader,
       },
       {
         path: '/detailed-search/:searchTerm',
         element: <CountryDetails />,
+      },
+      {
+        path: '/bookmarks',
+        element: <Bookmarks />,
       },
     ],
   },

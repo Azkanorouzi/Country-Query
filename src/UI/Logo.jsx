@@ -1,3 +1,8 @@
+import PropTypes from 'prop-types'
+Logo.propTypes = {
+  title: PropTypes.element,
+  icon: PropTypes.element,
+}
 export default function Logo({ title, icon }) {
   return (
     <div className="flex items-center">
