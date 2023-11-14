@@ -3,6 +3,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import CountryQuery from './pages/CountryQuery'
 import CountryDetails from './pages/CountryDetails'
+import { Provider } from 'react-redux'
+import store from './sotre'
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,11 @@ const router = createBrowserRouter([
   },
 ])
 function App() {
-  return <RouterProvider router={router}></RouterProvider>
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
+  )
 }
 
 export default App
