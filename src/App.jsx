@@ -7,10 +7,12 @@ import { Provider } from 'react-redux'
 import store from './sotre'
 import Bookmarks from './pages/Bookmarks'
 import './services/countryApi'
+import PageNotFound from './UI/PageNotFound'
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: '/',
@@ -18,16 +20,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/search/',
-        element: <CountryQuery />,
+        element: <CountryQuery err={false} />,
+        errorElement: <CountryQuery err={true} />,
       },
       {
         path: '/search/:searchTerm',
-        element: <CountryQuery />,
+        element: <CountryQuery err={false} />,
+        errorElement: <CountryQuery err={true} />,
         loader: searchLoader,
       },
       {
         path: '/detailed-search/:searchTerm',
-        element: <CountryDetails />,
+        element: <CountryDetails err={false} />,
+        errorElement: <CountryDetails err={true} />,
       },
       {
         path: '/bookmarks',

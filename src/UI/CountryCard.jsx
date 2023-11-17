@@ -10,7 +10,7 @@ export default function CountryCard({
   ],
 }) {
   return (
-    <div className="card lg:w-72 bg-base-100 shadow-xl mb-5 lg:mb-0">
+    <div className="card lg:w-64 bg-base-100 shadow-xl mb-5 lg:mb-0">
       <figure className="px-10 pt-10">
         <img src={imgSrc} alt="Shoes" className="rounded-xl" />
       </figure>

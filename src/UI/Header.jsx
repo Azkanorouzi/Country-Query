@@ -24,7 +24,6 @@ export default function Header() {
   // this function is only going to be applied if we're in /search
   const handleSearchInputChange = function () {
     dispatch(setSearchTerm(searchText))
-    console.log('hey')
   }
   return (
     <header className="flex justify-center lg:justify-between px-2 py-2 lg:px-10 lg:py-5 fixed top-0 w-full backdrop-blur-2xl z-50 items-center lg:gap-2">
