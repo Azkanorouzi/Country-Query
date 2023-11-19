@@ -1,6 +1,6 @@
 import { getCountry } from '../services/countryApi'
 import SearchPad from '../features/search/SearchPad'
-import ActiveCountry from '../features/search/ActiveCountry'
+import ActiveCountry from '../features/country-details/ActiveCountry'
 import ErrorMessage from '../UI/ErrorMessage'
 import PropTypes from 'prop-types'
 import { useLoaderData, useNavigation } from 'react-router'
