@@ -1,13 +1,17 @@
-import AppLayout from './UI/AppLayout'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from './pages/Home'
-import CountryQuery, { loader as searchLoader } from './pages/CountryQuery'
-import CountryDetails from './pages/CountryDetails'
 import { Provider } from 'react-redux'
 import store from './sotre'
-import Bookmarks from './pages/Bookmarks'
 import './services/countryApi'
-import PageNotFound from './UI/PageNotFound'
+import { Suspense, lazy } from 'react'
+import Loader from './UI/Loader'
+
+import { loader as searchLoader } from './pages/CountryQuery'
+const PageNotFound = lazy(() => import('./UI/PageNotFound'))
+const Bookmarks = lazy(() => import('./pages/Bookmarks'))
+const CountryQuery = lazy(() => import('./pages/CountryQuery'))
+const CountryDetails = lazy(() => import('./pages/CountryDetails'))
+const Home = lazy(() => import('./pages/Home'))
+const AppLayout = lazy(() => import('./UI/AppLayout'))
 
 const router = createBrowserRouter([
   {
@@ -44,7 +48,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router}></RouterProvider>
+      </Suspense>
     </Provider>
   )
 }

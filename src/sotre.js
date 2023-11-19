@@ -6,5 +6,6 @@ const store = configureStore({
     searchSlice: searchSlice.reducer,
   },
 })
-export const { setSearchTerm } = searchSlice.actions
+export const { setSearchTerm, setSelectedCountry, setSearchTermResult } =
+  searchSlice.actions
 export default store

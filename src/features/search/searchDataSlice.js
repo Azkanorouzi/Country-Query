@@ -1,14 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  searchTerm: '',
+  selectedCountry: null,
+  searchResult: [],
+  userCountry: '',
 }
 const searchSlice = createSlice({
   initialState,
   name: 'search',
   reducers: {
-    setSearchTerm: (state, action) => {
-      state.searchTerm = action.payload
+    setSelectedCountry: (state, action) => {
+      state.selectedCountry = action.payload
+    },
+    setSearchTermResult: (state, action) => {
+      state.searchResult = action.payload
     },
   },
 })
