@@ -16,9 +16,9 @@ export default function CountryCard({
   }
   return (
     <div
-      className={`card w-56 lg:w-64 bg-base-100 shadow-xl mb-5 lg:mb-0 border ${styles}`}
+      className={`card w-56 lg:w-64 bg-base-100 shadow-xl mb-5 lg:mb-0 border ${styles} overflow-scroll `}
     >
-      <figure className="px-10 pt-10 relative">
+      <figure className="px-5 pt-5 relative">
         <img
           src={imgSrc}
           alt="Shoes"
@@ -30,7 +30,7 @@ export default function CountryCard({
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{countryName}</h2>
-        <p>Other names: {otherNames.slice(0, 2).join(', ')}</p>
+        <p>Abbreviation: {otherNames.slice(0, 1).join(', ')}</p>
         <div className="card-actions">{btn}</div>
       </div>
     </div>

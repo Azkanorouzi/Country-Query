@@ -17,10 +17,12 @@ export default function SearchPad({ countries = [] }) {
 
   return (
     <aside
-      className={`p-0 flex-1 bg-slate-600 bg-opacity-50 backdrop-blur-md flex  gap-10 overflow-x-scroll items-center relative justify-center`}
+      className={`p-0 pb-16 pt-6 bg-slate-600 bg-opacity-50 backdrop-blur-md flex  gap-10 overflow-x-scroll items-center relative justify-center lg:justify-start h-96 ${
+        isResultEmpty && 'pt-36'
+      }`}
     >
       {isResultEmpty && <EmptyResult />}
-      <div className="flex gap-5 px-10 py-20 lg:py-0 flex-col lg:flex-row ">
+      <div className="flex gap-5 px-10 py-20 lg:py-0 flex-col lg:flex-row">
         {!isResultEmpty &&
           countries?.map((country) => {
             const isSelected = selectedCountry === country
@@ -42,7 +44,7 @@ export default function SearchPad({ countries = [] }) {
             )
             return (
               <CountryCard
-                key={country.population}
+                key={country.name.common}
                 countryName={country.name.common}
                 otherNames={country.altSpellings}
                 imgSrc={country.flags.png}

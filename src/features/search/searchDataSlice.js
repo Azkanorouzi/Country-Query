@@ -13,7 +13,8 @@ const searchSlice = createSlice({
       state.selectedCountry = action.payload
     },
     setSearchTermResult: (state, action) => {
-      state.searchResult = action.payload
+      state.searchResult = action.payload.slice(0, 30)
+      if (state.searchResult.length === 0) state.selectedCountry = null
     },
   },
 })
