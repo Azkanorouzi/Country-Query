@@ -6,6 +6,7 @@ import { Suspense, lazy } from 'react'
 import Loader from './UI/Loader'
 
 import { loader as searchLoader } from './pages/CountryQuery'
+import CountryDetailsPage from './pages/CountryDetailsPage'
 const PageNotFound = lazy(() => import('./UI/PageNotFound'))
 const Bookmarks = lazy(() => import('./pages/Bookmarks'))
 const CountryQuery = lazy(() => import('./pages/CountryQuery'))
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         path: '/detailed-search/:searchTerm',
         element: <CountryDetails err={false} />,
         errorElement: <CountryDetails err={true} />,
+      },
+      {
+        path: '/detailed-search/',
+        element: <CountryDetailsPage err={false} />,
+        errorElement: <CountryDetailsPage err={true} />,
       },
       {
         path: '/bookmarks',

@@ -3,25 +3,23 @@ import SearchPad from '../features/search/SearchPad'
 import ActiveCountry from '../features/country-details/ActiveCountry'
 import ErrorMessage from '../UI/ErrorMessage'
 import PropTypes from 'prop-types'
-import { useNavigate, useNavigation } from 'react-router'
+import { useLoaderData, useNavigate, useNavigation } from 'react-router'
 import store, { setSearchTermResult } from '../sotre'
 import { useSelector } from 'react-redux'
 import CountryButton from '../UI/CountryButton'
-import { Link } from 'react-router-dom'
 
 CountryQuery.propTypes = {
   err: PropTypes.bool,
 }
 
 export default function CountryQuery({ err }) {
-  const data = useSelector((cake) => cake.searchSlice.searchResult)
+  const data = useLoaderData()
   const selectedCountry = useSelector(
     (cake) => cake.searchSlice.selectedCountry
   )
-
   const navigation = useNavigation()
   const navigate = useNavigate()
-
+  console.log(data)
   let errMessage = ''
 
   if (err) {
@@ -50,7 +48,7 @@ export default function CountryQuery({ err }) {
           See more
         </CountryButton>
       )}
-      <SearchPad countries={data} />
+      <SearchPad countries={data.searchTermResult} />
     </main>
   )
 }
