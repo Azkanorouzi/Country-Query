@@ -19,7 +19,7 @@ export default function CountryQuery({ err }) {
   )
   const navigation = useNavigation()
   const navigate = useNavigate()
-  console.log(data)
+
   let errMessage = ''
 
   if (err) {
@@ -48,7 +48,7 @@ export default function CountryQuery({ err }) {
           See more
         </CountryButton>
       )}
-      <SearchPad countries={data.searchTermResult} />
+      <SearchPad countries={data?.searchTermResult} />
     </main>
   )
 }
@@ -58,6 +58,7 @@ export async function loader({ params }) {
     const searchTerm = params.searchTerm
     // Waiting for api to get back with the result
     const searchTermResult = await getCountry(searchTerm)
+
     store.dispatch(setSearchTermResult(searchTermResult))
     return { searchTermResult, isErr: false, loaderDataError: '' }
   } catch (err) {

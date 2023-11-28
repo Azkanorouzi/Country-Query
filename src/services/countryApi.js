@@ -1,10 +1,11 @@
 const API_URL = {
   name: `https://restcountries.com/v3.1/name/`,
   all: `https://restcountries.com/v3.1/all/`,
+  code: `https://restcountries.com/v3.1/alpha/`,
 }
 
-async function getCountry(key) {
-  const response = await fetch(`${API_URL.name}${key}`)
+async function getCountry(key, urlType = 'name') {
+  const response = await fetch(`${API_URL[urlType]}${key}`)
 
   if (response.status == 404)
     throw new Error(

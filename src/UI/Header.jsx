@@ -16,7 +16,7 @@ export default function Header() {
     navigate(`/search/${searchText}`)
   }
   return (
-    <header className="flex justify-center lg:justify-between px-2 py-2 lg:px-10 lg:py-5 fixed top-0 w-full backdrop-blur-2xl z-50 items-center lg:gap-7">
+    <header className="flex flex-col md:flex-row justify-center lg:justify-between px-2 py-2 lg:px-10 lg:py-5 fixed top-0 w-full backdrop-blur-2xl z-50 items-center lg:gap-7 gap-2 md:gap-0">
       <Link to={'/'}>
         <Logo
           icon={<img src={logo} alt="logo" className="w-8" />}

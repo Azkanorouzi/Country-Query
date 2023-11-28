@@ -1,8 +1,7 @@
-import { extractUnsplashInfo } from '../utils/extractUnsplashInfo'
-
 const API_URL = `https://api.unsplash.com/search/photos?`
 const API_KEY = `&client_id=g_zr227VsX87oFAbpnqH0pLWYitpwKms-T9v4BS--hs`
-async function getCountryPhoto(countryName, number = 5) {
+
+async function getCountryPhoto(countryName, number = 10) {
   if (!countryName) return
   const searchTerm = countryName?.toLowerCase()
 
@@ -18,7 +17,7 @@ async function getCountryPhoto(countryName, number = 5) {
   if (!response.ok) throw new Error('Something went wrong')
   const data = await response.json()
   const { results } = data
-  console.log(extractUnsplashInfo(results))
+
   return results
 }
 

@@ -1,7 +1,6 @@
 export function extractUnsplashInfo(results) {
   const extractedResult = results.map((img) => {
-    console.log(img.urls.regular)
-    return { url: img.urls.small, id: img.id, desc: img.description }
+    return { url: img.urls.regular, id: img.id, desc: img.description }
   })
-  console.log(extractedResult)
+  return extractedResult
 }

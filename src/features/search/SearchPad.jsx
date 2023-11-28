@@ -17,7 +17,7 @@ export default function SearchPad({ countries = [] }) {
 
   return (
     <aside
-      className={`p-0 pb-16 pt-6 bg-slate-600 bg-opacity-50 backdrop-blur-md flex  gap-10 overflow-x-scroll items-center relative justify-center lg:justify-start h-96 ${
+      className={`p-0 pb-16 pt-6 bg-slate-600 bg-opacity-50 backdrop-blur-md flex  gap-10 overflow-x-scroll items-center relative justify-center lg:justify-start lg:h-96 ${
         isResultEmpty && 'pt-36'
       }`}
     >
@@ -29,9 +29,12 @@ export default function SearchPad({ countries = [] }) {
             const btn = !isScreenSmall ? (
               <CountryButton
                 style={`${isSelected && 'bg-red-600'}`}
-                onClick={() =>
+                onClick={() => {
                   dispatch(setSelectedCountry(isSelected ? null : country))
-                }
+                  if (isSelected) {
+                    return
+                  }
+                }}
               >
                 {isSelected ? 'De-select' : 'Select'}
               </CountryButton>

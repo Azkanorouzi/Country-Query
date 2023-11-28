@@ -1,12 +1,12 @@
 export function extractCountryDetails(selectedCountry) {
   const {
-    altSpelling,
+    altSpellings,
     borders,
     capital,
     capitalInfo: { latlng },
     demonyms: { eng: peopleName },
     fifa,
-    flags: { alt: flagDesc, png: flag },
+    flags: { alt: flagDesc, svg: flag },
     languages,
     maps: { googleMaps: map },
     name,
@@ -14,7 +14,7 @@ export function extractCountryDetails(selectedCountry) {
     region,
   } = selectedCountry
   return {
-    altSpelling,
+    altSpellings,
     borders,
     capital,
     latlng,

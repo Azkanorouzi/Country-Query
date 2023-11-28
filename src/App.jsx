@@ -2,10 +2,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './sotre'
 import './services/countryApi'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import Loader from './UI/Loader'
 
 import { loader as searchLoader } from './pages/CountryQuery'
+import { loader as imageLoader } from './pages/CountryDetails'
 import CountryDetailsPage from './pages/CountryDetailsPage'
 const PageNotFound = lazy(() => import('./UI/PageNotFound'))
 const Bookmarks = lazy(() => import('./pages/Bookmarks'))
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
         path: '/detailed-search/:searchTerm',
         element: <CountryDetails err={false} />,
         errorElement: <CountryDetails err={true} />,
+        loader: imageLoader,
       },
       {
         path: '/detailed-search/',
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
   },
 ])
 function App() {
+  useEffect(() => {
+    localStorage.getItem('bookmarks') ||
+      localStorage.setItem('bookmarks', JSON.stringify([]))
+  }, [])
   return (
     <Provider store={store}>
       <Suspense fallback={<Loader />}>
