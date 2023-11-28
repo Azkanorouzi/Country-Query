@@ -1,6 +1,6 @@
 # Weather-query
 
-demo: [https://weatherquery-react.netlify.app/](https://weatherquery-react.netlify.app/)
+demo: [https://country-query.netlify.app/](https://country-query.netlify.app/)
 
 Hey there this is me AZKA 🙋‍♂️
 
