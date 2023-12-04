@@ -6,7 +6,16 @@
       rgba(255, 0, 0, 0.484),
       rgba(0, 0, 0, 0.487)
     ),
-    url('./assets/stars.webp');
+    url("./assets/stars.webp");
+}
+@media (prefers-color-scheme: light) {
+  .bg-star {
+    background-image: radial-gradient(
+        rgba(0, 204, 255, 0.5),
+        rgba(210, 211, 212, 0.641)
+      ),
+      url("./assets/stars.webp");
+  }
 }
 
 .main-title {

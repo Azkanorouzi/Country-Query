@@ -3,7 +3,7 @@ import SearchPad from '../features/search/SearchPad'
 import ActiveCountry from '../features/country-details/ActiveCountry'
 import ErrorMessage from '../UI/ErrorMessage'
 import PropTypes from 'prop-types'
-import { useLoaderData, useNavigate, useNavigation } from 'react-router'
+import { useLoaderData, useNavigate, useNavigation, useParams } from 'react-router'
 import store, { setSearchTermResult } from '../sotre'
 import { useSelector } from 'react-redux'
 import CountryButton from '../UI/CountryButton'
@@ -17,8 +17,10 @@ export default function CountryQuery({ err }) {
   const selectedCountry = useSelector(
     (cake) => cake.searchSlice.selectedCountry
   )
+  const { searchTerm } = useParams();
   const navigation = useNavigation()
   const navigate = useNavigate()
+  const targetCountry = data?.searchTermResult?.find && data?.searchTermResult?.find(country => country?.name?.common?.toLowerCase() === searchTerm?.toLowerCase())
 
   let errMessage = ''
 
@@ -40,7 +42,7 @@ export default function CountryQuery({ err }) {
       <ActiveCountry />
       {selectedCountry && (
         <CountryButton
-          style={'border border-red-600 rounded-none'}
+          style={'border dark:border-red-600 rounded-none'}
           onClick={() =>
             navigate(`/detailed-search/${selectedCountry.name.common}`)
           }
@@ -48,7 +50,7 @@ export default function CountryQuery({ err }) {
           See more
         </CountryButton>
       )}
-      <SearchPad countries={data?.searchTermResult} />
+      <SearchPad countries={targetCountry ? [targetCountry] : data?.searchTermResult} />
     </main>
   )
 }

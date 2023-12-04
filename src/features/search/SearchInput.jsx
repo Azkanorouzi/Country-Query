@@ -13,7 +13,7 @@ export default function SearchInput({
   return (
     <input
       type="text"
-      className={`input flex-1 h-7 lg:h-9  bg-black`}
+      className={`input flex-1 h-7 lg:h-9  bg-black text-white`}
       value={searchText}
       placeholder={placeholder}
       onChange={(e) => {

@@ -16,7 +16,7 @@ export default function CountryCard({
   }
   return (
     <div
-      className={`card w-56 lg:w-64 bg-base-100 shadow-xl mb-5 lg:mb-0 border ${styles} overflow-scroll `}
+      className={`card bg-slate-400 w-56 lg:w-64 dark:bg-base-100 shadow-xl mb-5 lg:mb-0 border ${styles}  `}
     >
       <figure className="px-5 pt-5 relative">
         <img

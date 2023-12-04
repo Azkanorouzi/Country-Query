@@ -17,9 +17,8 @@ export default function SearchPad({ countries = [] }) {
 
   return (
     <aside
-      className={`p-0 pb-16 pt-6 bg-slate-600 bg-opacity-50 backdrop-blur-md flex  gap-10 overflow-x-scroll items-center relative justify-center lg:justify-start lg:h-96 ${
-        isResultEmpty && 'pt-36'
-      }`}
+      className={`p-0 pb-16 pt-6 bg-slate-600 bg-opacity-50 flex  gap-10 overflow-x-scroll items-center relative justify-center lg:justify-start   ${isResultEmpty && 'pt-36'
+        }`}
     >
       {isResultEmpty && <EmptyResult />}
       <div className="flex gap-5 px-10 py-20 lg:py-0 flex-col lg:flex-row">

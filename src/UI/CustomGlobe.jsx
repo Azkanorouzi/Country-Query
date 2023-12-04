@@ -1,5 +1,5 @@
 import Globe from 'react-globe.gl'
-import {} from 'react-globe.gl'
+import { } from 'react-globe.gl'
 import PropTypes from 'prop-types'
 
 CustomGlobe.propType = {

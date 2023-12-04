@@ -13,12 +13,13 @@ export default function CountryDetails() {
   const fetcher = useFetcher()
   const params = useParams()
   const dispatch = useDispatch()
+  const { searchTerm } = useParams();
 
   const bookmarks = useSelector(({ searchSlice }) => searchSlice.bookmarks)
 
   const targetCountry =
     fetcher?.data?.searchTermResult &&
-    extractCountryDetails(fetcher?.data?.searchTermResult[0])
+    extractCountryDetails(fetcher?.data?.searchTermResult?.find(country => country?.name?.common === searchTerm))
   const isBookmarked = bookmarks.some(
     (bookmark) =>
       bookmark?.name?.common === targetCountry?.name?.common ?? false

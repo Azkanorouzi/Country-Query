@@ -12,7 +12,7 @@ export default function Bookmarks() {
     )
   })
   const dispatch = useDispatch()
-  console.log(bookmarks)
+
   return (
     <section className="w-screen h-screen grid place-content-center pt-16 ">
       <section className=" overflow-y-scroll h-full pb-20 p-5 rounded-xl">
