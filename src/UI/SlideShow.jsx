@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import 'react-slideshow-image/dist/styles.css'
+import { motion } from 'framer-motion'
 
 export const Slideshow = ({ img1, img2, img3, img4, img5 }) => {
   const [index, setIndex] = useState(0)
@@ -42,9 +43,10 @@ export const Slideshow = ({ img1, img2, img3, img4, img5 }) => {
   }, [slideImages.length])
 
   return (
-    <div
+    <motion.div
       className="slide-container h-60 w-60 md:h-80 md:w-80 lg:w-96 lg:h-96 rounded-lg border"
       style={imgStyle}
-    ></div>
+
+    ></motion.div>
   )
 }

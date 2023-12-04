@@ -1,8 +1,9 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, useOutlet } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './sotre'
 import './services/countryApi'
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import Loader from './UI/Loader'
 
 import { loader as searchLoader } from './pages/CountryQuery'
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
     ],
   },
 ])
+
 function App() {
   useEffect(() => {
     localStorage.getItem('bookmarks') ||
@@ -61,7 +63,9 @@ function App() {
   return (
     <Provider store={store}>
       <Suspense fallback={<Loader />}>
-        <RouterProvider router={router}></RouterProvider>
+        <AnimatePresence mode="wait">
+          <RouterProvider router={router}></RouterProvider>
+        </AnimatePresence>
       </Suspense>
     </Provider>
   )

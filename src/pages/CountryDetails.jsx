@@ -8,6 +8,7 @@ import { extractUnsplashInfo } from '../utils/extractUnsplashInfo'
 import InfoBox from '../UI/InfoBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { addBookmarks, deleteBookmark } from '../sotre'
+import { motion } from 'framer-motion'
 
 export default function CountryDetails() {
   const fetcher = useFetcher()
@@ -25,7 +26,7 @@ export default function CountryDetails() {
       bookmark?.name?.common === targetCountry?.name?.common ?? false
   )
 
-  const images = useLoaderData()?.searchTermResult
+  const images = useLoaderData()?.searchTermResult;
 
   useEffect(() => {
     if (!fetcher.data && fetcher.state === 'idle') {
@@ -43,9 +44,10 @@ export default function CountryDetails() {
 
   return (
     targetCountry && (
-      <main
+      <motion.main
         className="flex flex-col w-screen h-screen justify-center items-center pt-10 pb-10"
         style={flagStyle}
+        initial={{ opacity: '0' }} animate={{ opacity: 1 }}
       >
         <section className="p-5 bg-red-950 bg-opacity-50 backdrop-blur-lg flex text-white flex-col rounded-lg text-center gap-5 overflow-scroll h-[600px] mt-10 lg:w-[900px]">
           <div className="flex justify-between px-10 items-center content-center">
@@ -72,13 +74,13 @@ export default function CountryDetails() {
               img4={images[3]}
               img5={images[4]}
             />
-            <Slideshow
+            {images?.length == 10 && <Slideshow
               img1={images[5]}
               img2={images[6]}
               img3={images[7]}
               img4={images[8]}
               img5={images[9]}
-            />
+            />}
           </div>
           <p>Alt spellings: {targetCountry?.altSpellings}</p>
           <InfoBox bgColor={'bg-red-950'} textColor={'text-white'}>
@@ -142,7 +144,7 @@ export default function CountryDetails() {
             <div></div>
           </InfoBox>
         </section>
-      </main>
+      </motion.main >
     )
   )
 }

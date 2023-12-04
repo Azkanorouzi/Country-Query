@@ -7,6 +7,7 @@ import { useLoaderData, useNavigate, useNavigation, useParams } from 'react-rout
 import store, { setSearchTermResult } from '../sotre'
 import { useSelector } from 'react-redux'
 import CountryButton from '../UI/CountryButton'
+import { motion } from 'framer-motion'
 
 CountryQuery.propTypes = {
   err: PropTypes.bool,
@@ -20,6 +21,7 @@ export default function CountryQuery({ err }) {
   const { searchTerm } = useParams();
   const navigation = useNavigation()
   const navigate = useNavigate()
+
   const targetCountry = data?.searchTermResult?.find && data?.searchTermResult?.find(country => country?.name?.common?.toLowerCase() === searchTerm?.toLowerCase())
 
   let errMessage = ''
@@ -37,7 +39,7 @@ export default function CountryQuery({ err }) {
   }
 
   return (
-    <main className="flex flex-col lg:pt-28 justify-end min-h-screen relative">
+    <motion.main className="flex flex-col lg:pt-28 justify-end min-h-screen relative lg:overflow-hidden" initial={{ translateY: '100%' }} animate={{ translateY: 0 }} transition={{ duration: .5, ease: 'easeOut' }}>
       {errMessage}
       <ActiveCountry />
       {selectedCountry && (
@@ -46,12 +48,13 @@ export default function CountryQuery({ err }) {
           onClick={() =>
             navigate(`/detailed-search/${selectedCountry.name.common}`)
           }
+
         >
           See more
         </CountryButton>
       )}
       <SearchPad countries={targetCountry ? [targetCountry] : data?.searchTermResult} />
-    </main>
+    </motion.main>
   )
 }
 export async function loader({ params }) {
