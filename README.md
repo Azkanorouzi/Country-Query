@@ -1,4 +1,4 @@
-# Weather-query
+# Country-qurey
 
 demo: [https://country-query.netlify.app/](https://country-query.netlify.app/)
 
